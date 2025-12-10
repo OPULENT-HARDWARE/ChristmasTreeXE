@@ -2,16 +2,17 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <title>XENEON Edge – Christmas Tree</title>
+  <title>XENEON Edge – Christmas Tree (Brick)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     :root {
       --bg-light: #fdf4f3;
-      --bg-dark: #0b1120;
+      --bg-dark: #1a0f10;
       --text-light: #140809;
       --text-dark: #fef2f2;
 
+      /* Fireplace brick palette */
       --brick-bg-dark: #170708;
       --brick-mortar-dark: #4b1f1f;
       --brick-deep-dark: #450a0a;
@@ -69,6 +70,7 @@
       color: var(--text);
       padding: 0;
       background:
+        /* SAME brick wall pattern as fireplace */
         repeating-linear-gradient(
           0deg,
           var(--brick-bg) 0,
@@ -93,15 +95,15 @@
       max-height: 100%;
       border-radius: var(--radius-2xl);
       background:
-        radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.15), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.18), transparent 60%),
-        linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 6, 7, 0.96));
+        radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.12), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(248, 113, 113, 0.14), transparent 60%),
+        linear-gradient(145deg, rgba(15, 6, 7, 0.96), rgba(15, 23, 42, 0.96));
       box-shadow: var(--shadow-soft);
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      border: 2px solid rgba(148, 163, 184, 0.7);
+      border: 2px solid rgba(248, 113, 113, 0.65);
       position: relative;
       overflow: hidden;
       box-sizing: border-box;
@@ -113,8 +115,8 @@
       position: absolute;
       inset: -30%;
       background:
-        radial-gradient(circle at 10% 0%, rgba(248, 250, 252, 0.15), transparent 60%),
-        radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.18), transparent 60%);
+        radial-gradient(circle at 10% 0%, rgba(248, 250, 252, 0.12), transparent 60%),
+        radial-gradient(circle at 90% 100%, rgba(248, 113, 113, 0.18), transparent 60%);
       mix-blend-mode: screen;
       opacity: 0.7;
       pointer-events: none;
@@ -125,16 +127,24 @@
       border-radius: var(--radius-xl);
       padding: 12px;
       background:
+        /* inner brick bezel, like fireplace */
         repeating-linear-gradient(
           0deg,
-          rgba(15, 23, 42, 0.96) 0,
-          rgba(15, 23, 42, 0.96) 18px,
-          rgba(31, 41, 55, 0.96) 18px,
-          rgba(31, 41, 55, 0.96) 20px
+          var(--brick-deep) 0,
+          var(--brick-deep) 18px,
+          var(--brick-mortar) 18px,
+          var(--brick-mortar) 20px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          var(--brick-bright) 0,
+          var(--brick-bright) 44px,
+          var(--brick-deep) 44px,
+          var(--brick-deep) 46px
         );
-      background-size: 100% 20px;
+      background-size: 100% 20px, 50px 100%;
       box-shadow:
-        inset 0 0 0 1px rgba(15, 23, 42, 0.9),
+        inset 0 0 0 1px rgba(15, 6, 7, 0.9),
         0 10px 26px rgba(0, 0, 0, 0.9);
       min-height: 260px;
     }
@@ -144,10 +154,10 @@
       position: absolute;
       inset: 8px;
       border-radius: calc(var(--radius-xl) - 6px);
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid rgba(248, 113, 113, 0.75);
       box-shadow:
-        0 0 0 1px rgba(15, 23, 42, 0.95),
-        inset 0 0 0 1px rgba(15, 23, 42, 0.85);
+        0 0 0 1px rgba(15, 6, 7, 0.9),
+        inset 0 0 0 1px rgba(15, 6, 7, 0.85);
       pointer-events: none;
     }
 
@@ -155,12 +165,12 @@
       position: relative;
       border-radius: calc(var(--radius-xl) - 10px);
       overflow: hidden;
-      border: 1px solid rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(15, 6, 7, 0.95);
       box-shadow:
         inset 0 0 0 1px rgba(0, 0, 0, 0.9),
         0 0 40px rgba(0, 0, 0, 0.9);
-      /* Fill height nicely – works for portrait & landscape */
-      height: clamp(280px, 90vh, 100vh);
+      /* fill vertical space, including portrait */
+      height: clamp(280px, 88vh, 100vh);
       max-height: calc(100vh - 140px);
     }
 
@@ -169,48 +179,71 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      /* brick wall inside, like fireplace .scene */
       background:
-        radial-gradient(circle at 50% 0%, rgba(248, 250, 252, 0.12), transparent 55%),
-        radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.35), transparent 65%),
-        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.2), transparent 65%),
-        linear-gradient(to bottom, #020617 0%, #020617 45%, #020617 100%);
+        repeating-linear-gradient(
+          0deg,
+          #3b1010 0,
+          #3b1010 18px,
+          #4b1f1f 18px,
+          #4b1f1f 20px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          #7f1d1d 0,
+          #7f1d1d 44px,
+          #450a0a 44px,
+          #450a0a 46px
+        );
+      background-size: 100% 20px, 50px 100%;
     }
 
     .tree-scene::before {
-      /* subtle snowfall glow */
+      /* soft vignette + highlight behind foliage to keep greens readable */
       content: '';
       position: absolute;
-      inset: -40%;
+      inset: -10%;
       background:
-        radial-gradient(circle at 30% 0%, rgba(248, 250, 252, 0.08), transparent 55%),
-        radial-gradient(circle at 70% -10%, rgba(248, 250, 252, 0.1), transparent 65%);
-      mix-blend-mode: screen;
-      opacity: 0.6;
+        radial-gradient(circle at 50% 20%, rgba(248, 250, 252, 0.14), transparent 55%),
+        radial-gradient(circle at 50% 120%, rgba(0, 0, 0, 0.85), transparent 70%);
+      mix-blend-mode: soft-light;
       pointer-events: none;
     }
 
-    /* Snow base */
+    /* Floor/plinth instead of snow */
 
-    .snow-bank {
+    .floor-plinth {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 24%;
+      left: 10%;
+      right: 10%;
+      bottom: 10%;
+      height: 11%;
+      border-radius: 999px;
       background:
-        radial-gradient(circle at 50% 0%, rgba(248, 250, 252, 0.95), transparent 60%),
-        linear-gradient(to top, #e5e7eb, rgba(248, 250, 252, 0.95));
-      border-radius: 50% 50% 0 0;
+        linear-gradient(180deg, #111827, #020617);
       box-shadow:
-        0 -10px 30px rgba(15, 23, 42, 0.9) inset,
-        0 -8px 18px rgba(0, 0, 0, 0.7);
+        0 -10px 28px rgba(0, 0, 0, 0.95),
+        0 12px 22px rgba(0, 0, 0, 0.9);
+    }
+
+    .floor-glow {
+      position: absolute;
+      left: 24%;
+      right: 24%;
+      bottom: 10%;
+      height: 8%;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.45), transparent 70%);
+      filter: blur(4px);
+      opacity: 0.8;
     }
 
     /* Tree trunk */
 
     .tree-trunk {
       position: absolute;
-      bottom: 18%;
+      bottom: 14%;
       left: 50%;
       width: 7%;
       height: 10%;
@@ -219,7 +252,7 @@
       border-radius: 999px;
       box-shadow:
         0 6px 8px rgba(15, 23, 42, 0.8),
-        0 0 0 1px rgba(15, 23, 42, 0.9);
+        0 0 0 1px rgba(15, 6, 7, 0.9);
     }
 
     .tree-trunk::before {
@@ -229,18 +262,18 @@
       height: 40%;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 50% 0%, rgba(248, 250, 252, 0.3), transparent 75%);
+        radial-gradient(circle at 50% 0%, rgba(248, 250, 252, 0.25), transparent 75%);
       opacity: 0.9;
     }
 
-    /* Tree body (triangles stacked) */
+    /* Tree body (stacked triangles of green foliage) */
 
     .tree {
       position: absolute;
-      bottom: 24%;
+      bottom: 22%;
       left: 50%;
       width: min(46%, 320px);
-      height: 60%;
+      height: 62%;
       transform: translateX(-50%);
     }
 
@@ -252,7 +285,7 @@
       border-color: transparent transparent #065f46 transparent;
       filter:
         drop-shadow(0 14px 18px rgba(15, 23, 42, 0.9))
-        drop-shadow(0 0 12px rgba(22, 163, 74, 0.6));
+        drop-shadow(0 0 16px rgba(22, 163, 74, 0.5));
     }
 
     .tree-layer:nth-child(1) {
@@ -289,7 +322,7 @@
 
     .tree-star {
       position: absolute;
-      bottom: calc(24% + 60% + 2%);
+      bottom: calc(22% + 62% + 2%);
       left: 50%;
       width: 36px;
       height: 36px;
@@ -332,7 +365,7 @@
     }
 
     .tree-star-shape::after {
-      transform: scale(1.22);
+      transform: scale(1.25);
       opacity: 0.55;
       filter: blur(2px);
     }
@@ -344,7 +377,7 @@
       left: 50%;
       width: min(54%, 360px);
       height: 52%;
-      bottom: 24%;
+      bottom: 22%;
       transform: translateX(-50%);
       pointer-events: none;
     }
@@ -383,10 +416,8 @@
       opacity: 0.9;
     }
 
-    /* bulb colors */
-
     .bulb-red { background: #ef4444; }
-    .bulb-red::before { background: rgba(248, 113, 113, 0.8); }
+    .bulb-red::before { background: rgba(248, 113, 113, 0.85); }
 
     .bulb-gold { background: #fbbf24; }
     .bulb-gold::before { background: rgba(251, 191, 36, 0.9); }
@@ -400,7 +431,7 @@
     .bulb-pink { background: #ec4899; }
     .bulb-pink::before { background: rgba(236, 72, 153, 0.9); }
 
-    /* Arrange bulbs along garlands */
+    /* Bulb positions */
 
     .g1 .light-bulb:nth-child(1) { left: 12%; bottom: 6%; animation-delay: -0.2s; }
     .g1 .light-bulb:nth-child(2) { left: 32%; bottom: 3%; animation-delay: -0.8s; }
@@ -454,43 +485,13 @@
       background: radial-gradient(circle at 30% 20%, #bbf7d0 0, #16a34a 70%);
     }
 
-    /* positions */
-
-    .orn1 { left: 45%; bottom: 36%; animation-delay: -0.3s; }
-    .orn2 { left: 60%; bottom: 30%; animation-delay: -1.0s; }
-    .orn3 { left: 36%; bottom: 26%; animation-delay: -1.7s; }
-    .orn4 { left: 52%; bottom: 52%; animation-delay: -2.1s; }
-    .orn5 { left: 40%; bottom: 46%; animation-delay: -0.9s; }
+    .orn1 { left: 45%; bottom: 34%; animation-delay: -0.3s; }
+    .orn2 { left: 60%; bottom: 28%; animation-delay: -1.0s; }
+    .orn3 { left: 36%; bottom: 24%; animation-delay: -1.7s; }
+    .orn4 { left: 52%; bottom: 50%; animation-delay: -2.1s; }
+    .orn5 { left: 40%; bottom: 44%; animation-delay: -0.9s; }
     .orn6 { left: 50%; bottom: 18%; animation-delay: -1.4s; }
-    .orn7 { left: 63%; bottom: 42%; animation-delay: -2.3s; }
-
-    /* Falling snow (foreground) */
-
-    .snow-layer {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .snowflake {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      border-radius: 999px;
-      background: radial-gradient(circle, #e5e7eb 0, transparent 70%);
-      opacity: 0.9;
-      animation: snowDrift linear infinite;
-    }
-
-    .snowflake.s1 { left: 10%; top: -10%; animation-duration: 9s; animation-delay: -2s; }
-    .snowflake.s2 { left: 25%; top: -20%; animation-duration: 11s; animation-delay: -4s; }
-    .snowflake.s3 { left: 45%; top: -15%; animation-duration: 10s; animation-delay: -6s; }
-    .snowflake.s4 { left: 65%; top: -25%; animation-duration: 12s; animation-delay: -1s; }
-    .snowflake.s5 { left: 80%; top: -18%; animation-duration: 9s; animation-delay: -5s; }
-    .snowflake.s6 { left: 15%; top: -30%; animation-duration: 13s; animation-delay: -3s; }
-    .snowflake.s7 { left: 55%; top: -22%; animation-duration: 10s; animation-delay: -7s; }
-    .snowflake.s8 { left: 72%; top: -35%; animation-duration: 14s; animation-delay: -2s; }
+    .orn7 { left: 63%; bottom: 40%; animation-delay: -2.3s; }
 
     /* HUD */
 
@@ -506,17 +507,17 @@
       background:
         repeating-linear-gradient(
           0deg,
-          rgba(15, 23, 42, 0.98) 0,
-          rgba(15, 23, 42, 0.98) 18px,
-          rgba(30, 64, 175, 0.98) 18px,
-          rgba(30, 64, 175, 0.98) 20px
+          rgba(127, 29, 29, 0.98) 0,
+          rgba(127, 29, 29, 0.98) 18px,
+          rgba(69, 10, 10, 0.98) 18px,
+          rgba(69, 10, 10, 0.98) 20px
         );
       background-size: 100% 20px;
       border: 1px solid var(--hud-border);
       box-shadow:
         0 12px 24px rgba(0, 0, 0, 0.8),
-        inset 0 0 0 1px rgba(15, 23, 42, 0.85);
-      color: #e5e7eb;
+        inset 0 0 0 1px rgba(15, 6, 7, 0.85);
+      color: #fee2e2;
     }
 
     .hud-left {
@@ -536,11 +537,11 @@
       letter-spacing: 0.09em;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(191, 219, 254, 0.9);
+      border: 1px solid rgba(254, 226, 226, 0.9);
       background:
-        radial-gradient(circle at 0 0, rgba(191, 219, 254, 0.5), transparent 60%),
-        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 64, 175, 0.96));
-      color: #eff6ff;
+        radial-gradient(circle at 0 0, rgba(254, 242, 242, 0.4), transparent 60%),
+        linear-gradient(135deg, rgba(24, 4, 4, 0.96), rgba(127, 29, 29, 0.96));
+      color: #fef2f2;
       text-decoration: none;
       white-space: nowrap;
       transition:
@@ -552,11 +553,11 @@
 
     .brand-pill:hover {
       transform: translateY(-1px);
-      box-shadow: 0 0 16px rgba(191, 219, 254, 0.7);
-      border-color: #eff6ff;
+      box-shadow: 0 0 16px rgba(248, 250, 252, 0.7);
+      border-color: #fef2f2;
       background:
-        radial-gradient(circle at 20% 0, rgba(219, 234, 254, 0.6), transparent 60%),
-        linear-gradient(135deg, rgba(30, 64, 175, 1), rgba(59, 130, 246, 1));
+        radial-gradient(circle at 20% 0, rgba(254, 242, 242, 0.6), transparent 60%),
+        linear-gradient(135deg, rgba(127, 29, 29, 1), rgba(185, 28, 28, 1));
     }
 
     .brand-pill span.tree-icon {
@@ -573,12 +574,12 @@
       text-transform: uppercase;
       padding: 4px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(191, 219, 254, 0.7);
+      border: 1px solid rgba(254, 226, 226, 0.7);
       display: inline-flex;
       align-items: center;
       gap: 4px;
       background:
-        radial-gradient(circle at 0 0, rgba(191, 219, 254, 0.2), transparent 60%);
+        radial-gradient(circle at 0 0, rgba(254, 242, 242, 0.3), transparent 60%);
     }
 
     .badge-dot {
@@ -592,7 +593,7 @@
     .hud-title {
       font-size: 0.8rem;
       font-weight: 500;
-      color: #e5e7eb;
+      color: #fee2e2;
       white-space: nowrap;
     }
 
@@ -616,14 +617,14 @@
       width: 44px;
       height: 22px;
       border-radius: 999px;
-      border: 1px solid rgba(191, 219, 254, 0.9);
+      border: 1px solid rgba(254, 226, 226, 0.9);
       background: conic-gradient(
         from 180deg,
         #020617 0,
-        #1d4ed8 30%,
-        #67e8f9 55%,
-        #facc15 70%,
-        #f97316 85%,
+        #7f1d1d 30%,
+        #facc15 55%,
+        #22c55e 70%,
+        #0ea5e9 85%,
         #020617 100%
       );
       padding: 2px;
@@ -688,20 +689,6 @@
       50%  { transform: translateY(-3px); }
       100% { transform: translateY(0);    }
     }
-
-    @keyframes snowDrift {
-      0% {
-        transform: translate3d(0, 0, 0);
-        opacity: 0;
-      }
-      15% {
-        opacity: 0.9;
-      }
-      100% {
-        transform: translate3d(-30px, 110vh, 0);
-        opacity: 0;
-      }
-    }
   </style>
 </head>
 <body>
@@ -709,25 +696,14 @@
     <div class="scene-shell">
       <div class="tree-frame">
         <div class="tree-scene">
-          <!-- Snow -->
-          <div class="snow-layer">
-            <div class="snowflake s1"></div>
-            <div class="snowflake s2"></div>
-            <div class="snowflake s3"></div>
-            <div class="snowflake s4"></div>
-            <div class="snowflake s5"></div>
-            <div class="snowflake s6"></div>
-            <div class="snowflake s7"></div>
-            <div class="snowflake s8"></div>
-          </div>
-
-          <!-- Ground snow -->
-          <div class="snow-bank"></div>
+          <!-- Floor / plinth -->
+          <div class="floor-plinth"></div>
+          <div class="floor-glow"></div>
 
           <!-- Trunk -->
           <div class="tree-trunk"></div>
 
-          <!-- Tree body -->
+          <!-- Tree foliage -->
           <div class="tree">
             <div class="tree-layer"></div>
             <div class="tree-layer"></div>
@@ -801,7 +777,7 @@
         </div>
         <div class="hud-title">
           Christmas Tree
-          <span>Lights & Snow</span>
+          <span>Indoor · Brick Room</span>
         </div>
       </div>
 
